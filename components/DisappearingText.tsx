@@ -21,7 +21,7 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
         }
         // const letter = prev[0]
         // console.log(letter)
-        aa(prev[0])
+        addText(prev[0])
         return prev.slice(1)
       })
     }, interval)
@@ -29,11 +29,19 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
     // Clean up the interval on component unmount
     return () => clearInterval(timer)
   }, [interval])
-  function aa(prev) {
-    console.log(prev)
+  const [bgText, setBgText] = useState('')
+
+  function addText(letter: string) {
+    setBgText((prev) => {
+      return (prev += letter)
+    })
   }
 
-  return <div>{currentText}</div>
+  return (
+    <div>
+      {currentText}, {bgText}
+    </div>
+  )
 }
 
 export default DisappearingText
