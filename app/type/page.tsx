@@ -1,12 +1,12 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, FormEvent } from 'react'
 
-const QuizInputForm = () => {
-  const [inputText, setInputText] = useState('')
-  const [displayText, setDisplayText] = useState('')
-  const [quizVisible, setQuizVisible] = useState(false)
-  const [quizAnswer, setQuizAnswer] = useState('')
-  const [quizQuestion, setQuizQuestion] = useState('What is 2 + 2?')
+const QuizInputForm: React.FC = () => {
+  const [inputText, setInputText] = useState<string>('')
+  const [displayText, setDisplayText] = useState<string>('')
+  const [quizVisible, setQuizVisible] = useState<boolean>(false)
+  const [quizAnswer, setQuizAnswer] = useState<string>('')
+  const [quizQuestion] = useState<string>('What is 2 + 2?')
   const correctAnswer = '4'
 
   useEffect(() => {
@@ -20,13 +20,13 @@ const QuizInputForm = () => {
     }
   }, [displayText])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setDisplayText(inputText)
     setInputText('')
   }
 
-  const handleQuizSubmit = (e) => {
+  const handleQuizSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (quizAnswer === correctAnswer) {
       setDisplayText('Correct! Here is the content: ' + displayText)
