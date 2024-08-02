@@ -11,7 +11,6 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
   interval,
 }) => {
   const [currentText, setCurrentText] = useState<string>(text)
-
   useEffect(() => {
     // Set an interval to remove one character at a time
     const timer = setInterval(() => {
@@ -20,13 +19,19 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
           clearInterval(timer)
           return prev
         }
-        return prev.slice(0, -1)
+        // const letter = prev[0]
+        // console.log(letter)
+        aa(prev[0])
+        return prev.slice(1)
       })
     }, interval)
 
     // Clean up the interval on component unmount
     return () => clearInterval(timer)
   }, [interval])
+  function aa(prev) {
+    console.log(prev)
+  }
 
   return <div>{currentText}</div>
 }
