@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 interface DisappearingTextProps {
   text: string
@@ -11,6 +11,7 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
   interval,
 }) => {
   const [currentText, setCurrentText] = useState<string>(text)
+
   useEffect(() => {
     // Set an interval to remove one character at a time
     const timer = setInterval(() => {
@@ -19,8 +20,7 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
           clearInterval(timer)
           return prev
         }
-        // const letter = prev[0]
-        // console.log(letter)
+
         addText(prev[0])
         return prev.slice(1)
       })
@@ -29,6 +29,7 @@ const DisappearingText: React.FC<DisappearingTextProps> = ({
     // Clean up the interval on component unmount
     return () => clearInterval(timer)
   }, [interval])
+
   const [bgText, setBgText] = useState('')
 
   function addText(letter: string) {
