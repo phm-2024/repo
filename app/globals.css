@@ -14,11 +14,12 @@ html {
     rgba(179, 217, 219, 1) 100%
   );
 }
+
 body {
   display: flex;
   flex-direction: column;
   background-color: white;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 70%;
   height: 100vh;
@@ -45,8 +46,8 @@ button {
   text-shadow: 2px 2px rgba(138, 43, 226, 0.5);
 } */
 
-
-button, .p-16 {
+button,
+.p-16 {
   background-color: rgba(173, 216, 230, 0.5);
   color: rgb(49, 48, 48);
   border-radius: 5px;
@@ -75,6 +76,7 @@ input:focus {
   background-color: rgb(225, 238, 237);
   transform: scale(1.05);
   transition: 0.3s ease;
+<<<<<<< HEAD
 } 
 
 body > div > div {
@@ -82,4 +84,6 @@ body > div > div {
   flex-wrap: wrap;
   padding: 0 2em;
   max-width: 100%;
+=======
+>>>>>>> 0a5936e4c93b3641226e7cbee1fe8427201f8f03
 }
