@@ -86,7 +86,11 @@ export default function Document({
             </label>
           </>
         )}
-        <div onClick={() => setFocus(true)}>
+        <div
+          onClick={() => {
+            document.getElementById('textBox').focus()
+          }}
+        >
           <DisappearingText text={input} password={passkey} />
         </div>
         <input
@@ -95,7 +99,8 @@ export default function Document({
           className="border-solid border-2 border-indigo-600"
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
-          autoFocus={focus}
+          id="textBox"
+          autoFocus={true}
         />
         <button type="submit">Save notes</button>
       </form>
