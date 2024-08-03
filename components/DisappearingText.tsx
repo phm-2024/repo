@@ -17,7 +17,7 @@ const DisappearingText = ({ text }: Props) => {
     }, 1000)
 
     return () => clearTimeout(timer)
-  }, [currentIndex])
+  }, [currentIndex, text])
 
   return (
     <div>
