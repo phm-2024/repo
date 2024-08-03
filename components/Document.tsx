@@ -17,17 +17,17 @@ export default function Document() {
 
   return (
     <>
-      <form onSubmit={submission}>
-        <input
-          onChange={(e) => setForm(e.target.value)}
-          value={form}
-          className="border-solid border-2 border-indigo-600"
-          placeholder="Document"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <br />
-      {disappear && <DisappearingText text={input} />}
+      {/* <form onSubmit={submission}> */}
+      <DisappearingText text={input} />
+      <input
+        onChange={(e) => setInput(e.target.value)}
+        value={input}
+        className="border-solid border-2 border-indigo-600"
+        placeholder="Document"
+      />
+      {/* <button type="submit">Submit</button> */}
+      {/* </form> */}
+      {/* <br /> */}
     </>
   )
 }
