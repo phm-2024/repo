@@ -1,6 +1,6 @@
 'use client'
-import Password from '@/Components/Password'
-import Document from '@/Components/Document'
+import Password from '@/components/Password'
+import Document from '@/components/Document'
 import { useState } from 'react'
 
 export default function Home() {
