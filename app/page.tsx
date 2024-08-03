@@ -7,6 +7,7 @@ import LoadData from '@/components/LoadData'
 export default function Home() {
   const [passkey, setPasskey] = useState('')
   const [activeComponent, setActiveComponent] = useState('')
+  // console.log(activeComponent)
 
   const renderComponent = () => {
     if (activeComponent === 'New') {
