@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <Title />
+      {/* <Title /> */}
       {passkey === '' ? <Password setPasskey={setPasskey} /> : <Document />}
       <>{passkey}</>
     </>

@@ -15,8 +15,10 @@ export default function Document() {
           )
         }
         const data = await response.json()
+        console.log(data[0].notes)
 
         setNotes(data)
+
         setLoading(false)
       } catch (error) {
         console.error('Error fetching projects:', error)
@@ -28,10 +30,19 @@ export default function Document() {
   }, [])
 
   if (!loading && notes) {
+    const noteBits = notes[0].notes.split('\n')
+    console.log(noteBits)
+
     return (
       <>
         <h1>Below are your notes</h1>
-        <p>{notes[0].notes}</p>
+        <h1>{notes[0].file_name}</h1>
+        {noteBits.map((line, i) => (
+          <div key={i}>
+            <p>{line}</p>
+            <br />
+          </div>
+        ))}
       </>
     )
   }
