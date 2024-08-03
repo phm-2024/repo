@@ -40,14 +40,7 @@ button {
   }
 }
 
-/* button {
-  border-radius: 10%;
-  text-decoration: underline;
-  text-shadow: 2px 2px rgba(138, 43, 226, 0.5);
-} */
-
-button,
-.p-16 {
+button {
   background-color: rgba(173, 216, 230, 0.5);
   color: rgb(49, 48, 48);
   border-radius: 5px;
@@ -57,21 +50,20 @@ button,
   transition: 0.3s ease;
 }
 
-/* button:hover {
-  text-shadow: 5px 2px rgba(138, 43, 226, 0.5);
-} */
 button:hover {
   background-color: rgb(173, 216, 230);
   transform: scale(1.05);
 }
 
-input {
+input,
+label {
   box-shadow: 5px 5px 5px gray;
   border: 1px gray solid;
   border-radius: 5px;
   margin: 2em;
   padding: 0.5em;
 }
+
 input:focus {
   background-color: rgb(225, 238, 237);
   transform: scale(1.05);

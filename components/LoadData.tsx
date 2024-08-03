@@ -51,7 +51,7 @@ export default function LoadData({ setActiveComponent }: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col">
         <input
           onChange={handleChange}
           name="id"

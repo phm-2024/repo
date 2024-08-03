@@ -49,7 +49,7 @@ export default function Document({
 
   return (
     <>
-      <form onSubmit={createNotes}>
+      <form onSubmit={createNotes} className="flex flex-col">
         {inputId.length !== 5 && (
           <input
             className="border-solid border-2 border-indigo-600"
@@ -59,32 +59,28 @@ export default function Document({
           />
         )}
         {editTitle ? (
-          <>
-            <input
-              className="border-solid border-2 border-indigo-600"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder={docTitle}
-              onKeyDown={(e) => {
-                if (e.key == 'Enter') {
-                  setEditTitle(false)
-                }
-              }}
-              autoFocus={true}
-            />
-          </>
+          <input
+            className="border-solid border-2 border-indigo-600"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder={docTitle}
+            onKeyDown={(e) => {
+              if (e.key == 'Enter') {
+                setEditTitle(false)
+              }
+            }}
+            autoFocus={true}
+          />
         ) : (
-          <>
-            <label
-              className="border-solid border-2 border-indigo-600"
-              onDoubleClick={() => {
-                setEditTitle(true)
-                setTitle('')
-              }}
-            >
-              {title}
-            </label>
-          </>
+          <label
+            className="border-solid border-2 border-indigo-600"
+            onDoubleClick={() => {
+              setEditTitle(true)
+              setTitle('')
+            }}
+          >
+            {title}
+          </label>
         )}
         <div onClick={() => setFocus(true)}>
           <DisappearingText text={input} password={passkey} />
