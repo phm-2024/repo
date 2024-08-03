@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Document() {
-  const [notes, setNotes] = useState()
+  const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export default function Document() {
         }
         const data = await response.json()
         console.log(data)
+        console.log(data[0].password)
 
         setNotes(data)
         setLoading(false)
@@ -28,9 +29,12 @@ export default function Document() {
     fetchProjects()
   }, [])
 
-  return (
-    <>
-      <p>hello</p>
-    </>
-  )
+  if (!loading && notes) {
+    return (
+      <>
+        <h1>Bellow are your notes</h1>
+        <p>{notes[0].notes}</p>
+      </>
+    )
+  }
 }
