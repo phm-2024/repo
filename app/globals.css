@@ -34,3 +34,13 @@ button {
     text-wrap: balance;
   }
 }
+
+button {
+  border-radius: 10%;
+  text-decoration: underline;
+  text-shadow: 2px 2px rgba(138, 43, 226, 0.5);
+}
+
+button:hover {
+  text-shadow: 5px 2px rgba(138, 43, 226, 0.5);
+}

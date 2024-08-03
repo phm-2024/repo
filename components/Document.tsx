@@ -73,7 +73,7 @@ export default function Document({ docTitle, passkey }: Props) {
           </label>
         </>
       )}
-      <DisappearingText text={input} />
+      <DisappearingText text={input} password={passkey} />
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}

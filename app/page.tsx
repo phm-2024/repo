@@ -32,14 +32,6 @@ export default function Home() {
   // console.log(activeComponent)
 
   return (
-    // <>
-    //   {passkey === '' ? (
-    //     <Password setPasskey={setPasskey} />
-    //   ) : (
-    //     <Document id={0} docTitle={'Double Click to rename'} />
-    //   )}
-    //   {/* <>{passkey}</> */}
-    // </>
     <div>
       <button className="p-16" onClick={() => setActiveComponent('New')}>
         NEW
