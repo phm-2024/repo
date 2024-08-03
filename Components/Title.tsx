@@ -13,16 +13,20 @@ export default function Title() {
 
   return (
     <>
-      {title ? <span>{title}</span> : <span></span>}
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setForm(e.target.value)}
-          value={form}
-          placeholder="Make a title of your note"
-          className="border-solid border-2 border-indigo-600"
-        />
-        <button type="submit">Submit</button>
-      </form>
+      {title ? (
+        <span className="text-indigo-600 text-4xl italic mb-4">{title}</span>
+      ) : (
+        // <span></span>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={(e) => setForm(e.target.value)}
+            value={form}
+            placeholder="Put a title"
+            className="border-solid border-2 border-indigo-600"
+          />
+          <button type="submit">Save</button>
+        </form>
+      )}
     </>
   )
 }
