@@ -49,7 +49,7 @@ export default function Document({
 
   return (
     <>
-      <form onSubmit={createNotes}>
+      <form onSubmit={createNotes} className="flex flex-col">
         {inputId.length !== 5 && (
           <input
             className="border-solid border-2 border-indigo-600"
@@ -59,34 +59,30 @@ export default function Document({
           />
         )}
         {editTitle ? (
-          <>
-            <input
-              className="border-solid border-2 border-indigo-600"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder={docTitle}
-              onKeyDown={(e) => {
-                if (e.key == 'Enter') {
-                  setEditTitle(false)
-                }
-              }}
-              autoFocus={true}
-            />
-          </>
+          <input
+            className="border-solid border-2 border-indigo-600"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder={docTitle}
+            onKeyDown={(e) => {
+              if (e.key == 'Enter') {
+                setEditTitle(false)
+              }
+            }}
+            autoFocus={true}
+          />
         ) : (
-          <>
-            <label
-              className="border-solid border-2 border-indigo-600"
-              onDoubleClick={() => {
-                setEditTitle(true)
-                setTitle('')
-              }}
-            >
-              {title}
-            </label>
-          </>
+          <label
+            className="border-solid border-2 border-indigo-600"
+            onDoubleClick={() => {
+              setEditTitle(true)
+              setTitle('')
+            }}
+          >
+            {title}
+          </label>
         )}
-        <div onClick={() => setFocus(true)}>
+        <div onClick={() => setFocus(true)} className="w-96 h-64 break-words">
           <DisappearingText text={input} password={passkey} />
         </div>
         <input
@@ -96,6 +92,7 @@ export default function Document({
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
           autoFocus={focus}
+          maxLength={500}
         />
         <button type="submit">Save notes</button>
       </form>
