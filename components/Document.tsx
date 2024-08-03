@@ -82,7 +82,7 @@ export default function Document({
             {title}
           </label>
         )}
-        <div onClick={() => setFocus(true)}>
+        <div onClick={() => setFocus(true)} className="w-96 h-64 break-words">
           <DisappearingText text={input} password={passkey} />
         </div>
         <input
@@ -92,6 +92,7 @@ export default function Document({
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
           autoFocus={focus}
+          maxLength={500}
         />
         <button type="submit">Save notes</button>
       </form>
