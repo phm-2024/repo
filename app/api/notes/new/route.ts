@@ -3,13 +3,15 @@ import { turso } from '@/utils/database'
 export const POST = async (req: Request) => {
   const { user_id, password, file_name, notes } = await req.json()
 
-  try {
-    const newNote = await turso.execute(
-      `INSERT INTO notes (user_id, password, file_name, notes) VALUES(${user_id},${password},${file_name},${notes})`
-    )
+  const query =
+    'INSERT INTO notes (user_id, password, file_name, notes) VALUES (?,?,?,?)'
 
-    return new Response(JSON.stringify(newNote), { status: 201 })
+  const args = [user_id, password, file_name, notes]
+
+  try {
+    const result = await turso.execute({ sql: query, args })
+    return new Response(JSON.stringify(result), { status: 201 })
   } catch (error) {
-    return new Response('Failed to create a new prompt', { status: 500 })
+    return new Response('Failed to create a new note', { status: 500 })
   }
 }
