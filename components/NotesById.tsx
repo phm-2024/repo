@@ -6,9 +6,15 @@ interface Props {
   id: string
   docTitle: string
   passkey: string
+  setActiveComponent: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function NotesById({ id, docTitle, passkey }: Props) {
+export default function NotesById({
+  id,
+  docTitle,
+  passkey,
+  setActiveComponent,
+}: Props) {
   const [editTitle, setEditTitle] = useState(false)
   const [inputId, setInputId] = useState('')
   const [input, setInput] = useState('')
@@ -58,7 +64,7 @@ export default function NotesById({ id, docTitle, passkey }: Props) {
     setSubmitting(true)
 
     try {
-      const res = await fetch('/api/prompt/new', {
+      const res = await fetch('/api/notes/new', {
         method: 'POST',
         body: JSON.stringify({
           user_id: inputId,
@@ -71,6 +77,7 @@ export default function NotesById({ id, docTitle, passkey }: Props) {
       console.log(error)
     } finally {
       setSubmitting(false)
+      setActiveComponent('')
     }
   }
 
@@ -115,7 +122,7 @@ export default function NotesById({ id, docTitle, passkey }: Props) {
         style={{ color: 'white', border: 'none' }}
         autoFocus={focus}
       />
-      <button onClick={() => createNotes}>Save notes</button>
+      <button onClick={createNotes}>Save notes</button>
     </>
   )
 }

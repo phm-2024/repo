@@ -20,12 +20,13 @@ export default function Home() {
               // id={0}
               docTitle={'Double Click to rename'}
               passkey={passkey}
+              setActiveComponent={setActiveComponent}
             />
           )}
         </>
       )
     } else if (activeComponent === 'LoadData') {
-      return <LoadData />
+      return <LoadData setActiveComponent={setActiveComponent} />
     }
     return null
   }

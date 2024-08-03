@@ -4,9 +4,14 @@ import DisappearingText from './DisappearingText'
 interface Props {
   docTitle: string
   passkey: string
+  setActiveComponent: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function Document({ docTitle, passkey }: Props) {
+export default function Document({
+  docTitle,
+  passkey,
+  setActiveComponent,
+}: Props) {
   const [editTitle, setEditTitle] = useState(false)
   const [inputId, setInputId] = useState('')
   const [input, setInput] = useState('')
@@ -38,6 +43,7 @@ export default function Document({ docTitle, passkey }: Props) {
       console.log(error)
     } finally {
       setSubmitting(false)
+      setActiveComponent('')
     }
   }
 

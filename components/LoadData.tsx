@@ -3,13 +3,16 @@
 import { useState } from 'react'
 import NotesById from './NotesById'
 
+interface Props {
+  setActiveComponent: React.Dispatch<React.SetStateAction<string>>
+}
 interface Form {
   id: string
   file: string
   password: string
 }
 
-export default function LoadData() {
+export default function LoadData({ setActiveComponent }: Props) {
   const [formInputs, setformInputs] = useState<Form>({
     id: '',
     file: '',
@@ -78,6 +81,7 @@ export default function LoadData() {
           id={sendForm.id}
           docTitle={sendForm.file}
           passkey={sendForm.password}
+          setActiveComponent={setActiveComponent}
         />
       )}
     </>
