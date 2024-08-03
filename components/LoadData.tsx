@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Notes from './Notes'
 import { NotesById } from './NotesById'
+import Document from './Document'
 
 interface Form {
   id: string
@@ -25,6 +26,14 @@ export default function LoadData() {
     password: '',
   })
 
+  const [sendForm, setSendForm] = useState<Form>({
+    id: '',
+    file: '',
+    password: '',
+  })
+
+  const [loadDoc, setLoadDoc] = useState(false)
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
     setForm((prevForm) => ({
@@ -36,7 +45,9 @@ export default function LoadData() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setformInputs(form)
+    setSendForm(form)
     setForm({ id: '', file: '', password: '' })
+    setLoadDoc(true)
   }
 
   return (
@@ -65,8 +76,15 @@ export default function LoadData() {
         />
         <button type="submit">Load the doc</button>
         {/* <Notes input={form} /> */}
-        {formInputs.id.length > 0 && <NotesById input={formInputs} />}
+        {/* {formInputs.id.length > 0 && <NotesById input={formInputs} />} */}
       </form>
+      {loadDoc && (
+        <Document
+          id={Number(sendForm.id)}
+          docTitle={sendForm.file}
+          password={sendForm.password}
+        />
+      )}
     </>
   )
 }

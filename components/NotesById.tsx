@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import DisappearingText from './DisappearingText'
 
 interface Form {
   id: string
@@ -52,17 +53,18 @@ export const NotesById = ({ input }: Props) => {
   if (!loading && notes) {
     const noteBits = notes[0].notes.split('\n')
 
-    if (fileName && password) {
+    if (fileName) {
       return (
         <>
+          <DisappearingText text={notes[0].notes} password={input.password} />
           <h1>Below are your notes</h1>
-          <h1>{notes[0].file_name}</h1>
+          {/* <h1>{notes[0].file_name}</h1>
           {noteBits.map((line, i) => (
             <div key={i}>
               <p>{line}</p>
               <br />
             </div>
-          ))}
+          ))} */}
         </>
       )
     } else if (!password) {
