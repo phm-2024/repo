@@ -40,7 +40,7 @@ const DisappearingText = ({ text, password }: Props) => {
   function handleFocus() {}
 
   return (
-    <div>
+    <>
       {text.split('').map((char, index) => (
         <span
           key={index}
@@ -55,7 +55,7 @@ const DisappearingText = ({ text, password }: Props) => {
           {char}
         </span>
       ))}
-    </div>
+    </>
   )
 }
 

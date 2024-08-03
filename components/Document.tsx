@@ -49,7 +49,7 @@ export default function Document({
 
   return (
     <>
-      <form onSubmit={createNotes}>
+      <form onSubmit={createNotes} className="flex flex-col">
         {inputId.length !== 5 && (
           <input
             className="border-solid border-2 border-indigo-600"
@@ -59,38 +59,38 @@ export default function Document({
           />
         )}
         {editTitle ? (
-          <>
-            <input
-              className="border-solid border-2 border-indigo-600"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder={docTitle}
-              onKeyDown={(e) => {
-                if (e.key == 'Enter') {
-                  setEditTitle(false)
-                }
-              }}
-              autoFocus={true}
-            />
-          </>
+          <input
+            className="border-solid border-2 border-indigo-600"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder={docTitle}
+            onKeyDown={(e) => {
+              if (e.key == 'Enter') {
+                setEditTitle(false)
+              }
+            }}
+            autoFocus={true}
+          />
         ) : (
-          <>
-            <label
-              className="border-solid border-2 border-indigo-600"
-              onDoubleClick={() => {
-                setEditTitle(true)
-                setTitle('')
-              }}
-            >
-              {title}
-            </label>
-          </>
+          <label
+            className="border-solid border-2 border-indigo-600"
+            onDoubleClick={() => {
+              setEditTitle(true)
+              setTitle('')
+            }}
+          >
+            {title}
+          </label>
         )}
+<<<<<<< HEAD
         <div
           onClick={() => {
             document.getElementById('textBox').focus()
           }}
         >
+=======
+        <div onClick={() => setFocus(true)} className="w-96 h-64 break-words">
+>>>>>>> cecb4bdf21363030039394ff2c2f352708e0838c
           <DisappearingText text={input} password={passkey} />
         </div>
         <input
@@ -99,8 +99,13 @@ export default function Document({
           className="border-solid border-2 border-indigo-600"
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
+<<<<<<< HEAD
           id="textBox"
           autoFocus={true}
+=======
+          autoFocus={focus}
+          maxLength={500}
+>>>>>>> cecb4bdf21363030039394ff2c2f352708e0838c
         />
         <button type="submit">Save notes</button>
       </form>
