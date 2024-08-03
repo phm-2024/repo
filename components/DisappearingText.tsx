@@ -4,18 +4,21 @@ import { useState, useEffect } from 'react'
 
 interface Props {
   text: string
-  passedWord: boolean
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
-  currentIndex: number
+  password: string
 }
 
-const DisappearingText = ({
-  text,
-  passedWord,
-  setCurrentIndex,
-  currentIndex,
-}: Props) => {
+const DisappearingText = ({ text, password }: Props) => {
+  const [passedWord, setPassedWord] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   useEffect(() => {
+    const check = text
+      .split('')
+      .filter((char, i) => i >= currentIndex)
+      .join('')
+    const found = check.match(password)
+    found != null ? setPassedWord(true) : setPassedWord(false)
+
     const timer = setTimeout(() => {
       if (currentIndex < text.length) {
         setCurrentIndex(currentIndex + 1)
@@ -28,8 +31,10 @@ const DisappearingText = ({
       }
     }, 100)
 
-    return () => clearTimeout(timer)
-    return () => clearTimeout(restore)
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(restore)
+    }
   }, [currentIndex, text])
 
   return (

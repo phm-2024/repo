@@ -11,7 +11,6 @@ export default function Document({ id, docTitle, password }: Props) {
   const [editTitle, setEditTitle] = useState(false)
   const [input, setInput] = useState('')
   const [title, setTitle] = useState(docTitle)
-  const [currentIndex, setCurrentIndex] = useState(0)
 
   return (
     <>
@@ -42,12 +41,7 @@ export default function Document({ id, docTitle, password }: Props) {
           </label>
         </>
       )}
-      <DisappearingText
-        text={input}
-        setCurrentIndex={setCurrentIndex}
-        currentIndex={currentIndex}
-        passedWord={false}
-      />
+      <DisappearingText text={input} password={password} />
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}
