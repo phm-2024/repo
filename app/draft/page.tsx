@@ -1,9 +1,11 @@
 import DisappearingText from '@/components/DisappearingText'
+import LoadData from '@/components/LoadData'
 import React from 'react'
 
 const App = () => (
   <div>
-    <DisappearingText text="Hello, World!" />
+    <LoadData />
+    {/* <DisappearingText text="Hello, World!" /> */}
   </div>
 )
 
