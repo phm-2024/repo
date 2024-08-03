@@ -25,6 +25,10 @@ body {
   padding: 3em;
 }
 
+button {
+  background-color: grey;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
