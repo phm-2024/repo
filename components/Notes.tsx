@@ -1,7 +1,17 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-export default function Document() {
+interface Form {
+  id: number
+  file: string
+  password: string
+}
+
+interface Props {
+  input: Form
+}
+
+export default function Notes({ input }: Props) {
   const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
 

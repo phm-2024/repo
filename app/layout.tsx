@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <span className="text-indigo-600 text-4xl italic m-16">
+          WEBSITE NAME
+        </span>
+        {children}
+      </body>
     </html>
   )
 }
