@@ -25,7 +25,6 @@ const DisappearingText = ({ text }: Props) => {
         <span
           key={index}
           className={index < currentIndex ? 'text-white' : 'text-black'}
-          // style={{ color: index < currentIndex ? 'white' : 'black' }}
         >
           {char}
         </span>
