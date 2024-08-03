@@ -1,11 +1,18 @@
 'use client'
 
 import { useState } from 'react'
+import Notes from './Notes'
+
+interface Form {
+  id: number
+  file: string
+  password: string
+}
 
 export default function LoadData() {
   const data = { id: 1, file: 'file name', password: '1' }
 
-  const [form, setForm] = useState({ id: 0, file: '', password: '' })
+  const [form, setForm] = useState<Form>({ id: 0, file: '', password: '' })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
@@ -44,6 +51,7 @@ export default function LoadData() {
           className="border-solid border-2 border-indigo-600"
         />
         <button type="submit">Load the doc</button>
+        <Notes input={form} />
       </form>
     </>
   )
