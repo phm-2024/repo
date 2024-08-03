@@ -4,11 +4,17 @@ import { useState, useEffect } from 'react'
 
 interface Props {
   text: string
+  passedWord: boolean
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+  currentIndex: number
 }
 
-const DisappearingText = ({ text }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
+const DisappearingText = ({
+  text,
+  passedWord,
+  setCurrentIndex,
+  currentIndex,
+}: Props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (currentIndex < text.length) {
@@ -16,7 +22,14 @@ const DisappearingText = ({ text }: Props) => {
       }
     }, 1000)
 
+    const restore = setTimeout(() => {
+      if (currentIndex > text.length) {
+        setCurrentIndex(text.length)
+      }
+    }, 100)
+
     return () => clearTimeout(timer)
+    return () => clearTimeout(restore)
   }, [currentIndex, text])
 
   return (
@@ -24,7 +37,13 @@ const DisappearingText = ({ text }: Props) => {
       {text.split('').map((char, index) => (
         <span
           key={index}
-          className={index < currentIndex ? 'text-white' : 'text-black'}
+          className={
+            index < currentIndex
+              ? passedWord
+                ? 'text-black'
+                : 'text-white'
+              : 'text-black'
+          }
         >
           {char}
         </span>

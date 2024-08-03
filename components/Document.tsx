@@ -4,12 +4,14 @@ import DisappearingText from './DisappearingText'
 interface Props {
   id: number
   docTitle: string
+  password: string
 }
 
-export default function Document({ id, docTitle }: Props) {
+export default function Document({ id, docTitle, password }: Props) {
   const [editTitle, setEditTitle] = useState(false)
   const [input, setInput] = useState('')
   const [title, setTitle] = useState(docTitle)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   return (
     <>
@@ -40,7 +42,12 @@ export default function Document({ id, docTitle }: Props) {
           </label>
         </>
       )}
-      <DisappearingText text={input} />
+      <DisappearingText
+        text={input}
+        setCurrentIndex={setCurrentIndex}
+        currentIndex={currentIndex}
+        passedWord={false}
+      />
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}

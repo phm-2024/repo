@@ -15,7 +15,11 @@ export default function Home() {
           {passkey === '' ? (
             <Password setPasskey={setPasskey} />
           ) : (
-            <Document id={0} docTitle={'Double Click to rename'} />
+            <Document
+              id={0}
+              docTitle={'Double Click to rename'}
+              password={passkey}
+            />
           )}
         </>
       )
@@ -26,14 +30,6 @@ export default function Home() {
   }
 
   return (
-    // <>
-    //   {passkey === '' ? (
-    //     <Password setPasskey={setPasskey} />
-    //   ) : (
-    //     <Document id={0} docTitle={'Double Click to rename'} />
-    //   )}
-    //   {/* <>{passkey}</> */}
-    // </>
     <div>
       <button className="p-16" onClick={() => setActiveComponent('New')}>
         NEW
