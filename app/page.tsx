@@ -7,6 +7,7 @@ import LoadData from '@/components/LoadData'
 export default function Home() {
   const [passkey, setPasskey] = useState('')
   const [activeComponent, setActiveComponent] = useState('')
+  // console.log(activeComponent)
 
   const renderComponent = () => {
     if (activeComponent === 'New') {
@@ -19,12 +20,13 @@ export default function Home() {
               // id={0}
               docTitle={'Double Click to rename'}
               passkey={passkey}
+              setActiveComponent={setActiveComponent}
             />
           )}
         </>
       )
     } else if (activeComponent === 'LoadData') {
-      return <LoadData />
+      return <LoadData setActiveComponent={setActiveComponent} />
     }
     return null
   }
