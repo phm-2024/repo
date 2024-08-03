@@ -1,23 +1,54 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import DisappearingText from './DisappearingText'
 
 interface Props {
-  id: number
+  // id: number
   docTitle: string
-  password: string
+  passkey: string
 }
 
-export default function Document({ id, docTitle, password }: Props) {
+export default function Document({ docTitle, passkey }: Props) {
   const [editTitle, setEditTitle] = useState(false)
+  const [inputId, setInputId] = useState('')
   const [input, setInput] = useState('')
   const [title, setTitle] = useState(docTitle)
+  const [submitting, setSubmitting] = useState(false)
+
+  async function createNotes(e: ChangeEvent<HTMLTextAreaElement>) {
+    e.preventDefault()
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('/api/prompt/new', {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: inputId,
+          password: passkey,
+          file_name: title,
+          notes: input,
+        }),
+      })
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <>
-      <h1>{id}</h1>
+      {inputId.length !== 5 && (
+        <input
+          className="border-solid border-2 border-indigo-600"
+          onChange={(e) => setInputId(e.target.value)}
+          value={inputId}
+          placeholder="input a 5-digit number"
+        />
+      )}
       {editTitle ? (
         <>
           <input
+            className="border-solid border-2 border-indigo-600"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder={docTitle}
@@ -32,6 +63,7 @@ export default function Document({ id, docTitle, password }: Props) {
       ) : (
         <>
           <label
+            className="border-solid border-2 border-indigo-600"
             onDoubleClick={() => {
               setEditTitle(true)
               setTitle('')
@@ -41,7 +73,7 @@ export default function Document({ id, docTitle, password }: Props) {
           </label>
         </>
       )}
-      <DisappearingText text={input} password={password} />
+      <DisappearingText text={input} password={passkey} />
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}
@@ -49,6 +81,7 @@ export default function Document({ id, docTitle, password }: Props) {
         placeholder="Document"
         style={{ color: 'white', border: 'none' }}
       />
+      <button onClick={() => createNotes}>Save notes</button>
     </>
   )
 }

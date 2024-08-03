@@ -16,9 +16,9 @@ export default function Home() {
             <Password setPasskey={setPasskey} />
           ) : (
             <Document
-              id={0}
+              // id={0}
               docTitle={'Double Click to rename'}
-              password={passkey}
+              passkey={passkey}
             />
           )}
         </>
@@ -28,6 +28,8 @@ export default function Home() {
     }
     return null
   }
+
+  // console.log(activeComponent)
 
   return (
     <div>
