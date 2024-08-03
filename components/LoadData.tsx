@@ -1,29 +1,37 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Notes from './Notes'
-import { NotesById } from './NotesById'
+import { useState } from 'react'
+import NotesById from './NotesById'
 
+interface Props {
+  setActiveComponent: React.Dispatch<React.SetStateAction<string>>
+}
 interface Form {
   id: string
   file: string
   password: string
 }
 
-export default function LoadData() {
-  // const data = { id: 1, file: 'file name', password: '1' }
+export default function LoadData({ setActiveComponent }: Props) {
   const [formInputs, setformInputs] = useState<Form>({
     id: '',
     file: '',
     password: '',
   })
-  // id: '21442',
 
   const [form, setForm] = useState<Form>({
     id: '',
     file: '',
     password: '',
   })
+
+  const [sendForm, setSendForm] = useState<Form>({
+    id: '',
+    file: '',
+    password: '',
+  })
+
+  const [loadDoc, setLoadDoc] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
@@ -36,7 +44,9 @@ export default function LoadData() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setformInputs(form)
+    setSendForm(form)
     setForm({ id: '', file: '', password: '' })
+    setLoadDoc(true)
   }
 
   return (
@@ -64,9 +74,16 @@ export default function LoadData() {
           className="border-solid border-2 border-indigo-600"
         />
         <button type="submit">Load the doc</button>
-        {/* <Notes input={form} /> */}
-        {formInputs.id.length > 0 && <NotesById input={formInputs} />}
+        {/* {formInputs.id.length > 0 && <NotesById input={formInputs} />} */}
       </form>
+      {loadDoc && (
+        <NotesById
+          id={sendForm.id}
+          docTitle={sendForm.file}
+          passkey={sendForm.password}
+          setActiveComponent={setActiveComponent}
+        />
+      )}
     </>
   )
 }
