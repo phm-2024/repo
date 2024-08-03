@@ -51,8 +51,6 @@ export const NotesById = ({ input }: Props) => {
 
   if (!loading && notes) {
     const noteBits = notes[0].notes.split('\n')
-    console.log('filename? ', fileName)
-    console.log('password? ', password)
 
     if (fileName && password) {
       return (
