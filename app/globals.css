@@ -25,6 +25,10 @@ body {
   padding: 3em;
 }
 
+body > div {
+  text-align: center;
+}
+
 button {
   background-color: grey;
 }
@@ -49,6 +53,7 @@ button, .p-16 {
   padding: 0.5em;
   box-shadow: 5px 5px 5px gray;
   margin: 1em 2em;
+  transition: 0.3s ease;
 }
 
 /* button:hover {
@@ -56,9 +61,7 @@ button, .p-16 {
 } */
 button:hover {
   background-color: rgb(173, 216, 230);
-  transition: 0.25s;
   transform: scale(1.05);
-  transition: 0.3s ease;
 }
 
 input {
@@ -73,3 +76,10 @@ input:focus {
   transform: scale(1.05);
   transition: 0.3s ease;
 } 
+
+body > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 2em;
+  max-width: 100%;
+}
