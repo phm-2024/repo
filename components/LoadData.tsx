@@ -27,7 +27,6 @@ export default function LoadData() {
   }
   return (
     <>
-      3 forms
       <form onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
