@@ -8,7 +8,11 @@ export default function Home() {
 
   return (
     <>
-      {passkey === '' ? <Password setPasskey={setPasskey} /> : <Document />}
+      {passkey === '' ? (
+        <Password setPasskey={setPasskey} />
+      ) : (
+        <Document id={0} docTitle={'Double Click to rename'} />
+      )}
       {/* <>{passkey}</> */}
     </>
   )
