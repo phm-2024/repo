@@ -22,12 +22,12 @@ export default function Document() {
           onChange={(e) => setForm(e.target.value)}
           value={form}
           className="border-solid border-2 border-indigo-600"
+          placeholder="Document"
         />
         <button type="submit">Submit</button>
       </form>
       <br />
       {disappear && <DisappearingText text={input} />}
-      {/* <p>{input}</p> */}
     </>
   )
 }
