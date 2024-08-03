@@ -30,7 +30,7 @@ export default function Document() {
   if (!loading && notes) {
     return (
       <>
-        <h1>Bellow are your notes</h1>
+        <h1>Below are your notes</h1>
         <p>{notes[0].notes}</p>
       </>
     )
