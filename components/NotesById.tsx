@@ -6,19 +6,17 @@ interface Form {
   file: string
   password: string
 }
-
 interface Props {
   input: Form
 }
 
-export default function Notes({ input }: Props) {
+export const NotesById = ({ input }: Props) => {
   const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
-
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/notes')
+        const response = await fetch(`/api/notes/${input.id}`)
         if (!response.ok) {
           throw new Error(
             `Failed to fetch projects - ${response.status} ${response.statusText}`
