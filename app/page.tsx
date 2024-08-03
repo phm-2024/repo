@@ -1,17 +1,35 @@
 'use client'
-import Password from '@/components/Password'
-import Document from '@/components/Document'
+import Password from '../components/Password'
+import Document from '../components/Document'
 import { useState } from 'react'
-import Title from '@/components/Title'
+import LoadData from '@/components/LoadData'
 
 export default function Home() {
   const [passkey, setPasskey] = useState('')
+  const [activeComponent, setActiveComponent] = useState('')
+
+  const renderComponent = () => {
+    if (activeComponent === 'New') {
+      return (
+        <>
+          {passkey === '' ? <Password setPasskey={setPasskey} /> : <Document />}
+        </>
+      )
+    } else if (activeComponent === 'LoadData') {
+      return <LoadData />
+    }
+    return null
+  }
 
   return (
-    <>
-      {/* <Title /> */}
-      {passkey === '' ? <Password setPasskey={setPasskey} /> : <Document />}
-      <>{passkey}</>
-    </>
+    <div>
+      <button className="p-16" onClick={() => setActiveComponent('New')}>
+        NEW
+      </button>
+      <button className="p-16" onClick={() => setActiveComponent('LoadData')}>
+        LOAD
+      </button>
+      {renderComponent()}
+    </div>
   )
 }
