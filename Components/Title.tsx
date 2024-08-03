@@ -16,7 +16,6 @@ export default function Title() {
       {title ? (
         <span className="text-indigo-600 text-4xl italic mb-4">{title}</span>
       ) : (
-        // <span></span>
         <form onSubmit={handleSubmit}>
           <input
             onChange={(e) => setForm(e.target.value)}
