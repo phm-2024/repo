@@ -14,7 +14,11 @@ export default function Password({ setPasskey }: Props) {
   return (
     <>
       <form onSubmit={submission}>
-        <input onChange={(e) => setPassword(e.target.value)} value={password} />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          className="border-solid border-2 border-indigo-600"
+        />
         <button type="submit">Submit</button>
       </form>
     </>
