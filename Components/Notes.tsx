@@ -15,8 +15,6 @@ export default function Document() {
           )
         }
         const data = await response.json()
-        console.log(data)
-        console.log(data[0].password)
 
         setNotes(data)
         setLoading(false)
