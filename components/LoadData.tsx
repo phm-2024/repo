@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { NotesById } from './NotesById'
+import { useState } from 'react'
+import NotesById from './NotesById'
 
 interface Form {
   id: string
@@ -22,6 +22,14 @@ export default function LoadData() {
     password: '',
   })
 
+  const [sendForm, setSendForm] = useState<Form>({
+    id: '',
+    file: '',
+    password: '',
+  })
+
+  const [loadDoc, setLoadDoc] = useState(false)
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
     setForm((prevForm) => ({
@@ -33,7 +41,9 @@ export default function LoadData() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setformInputs(form)
+    setSendForm(form)
     setForm({ id: '', file: '', password: '' })
+    setLoadDoc(true)
   }
 
   return (
@@ -61,8 +71,15 @@ export default function LoadData() {
           className="border-solid border-2 border-indigo-600"
         />
         <button type="submit">Load the doc</button>
-        {formInputs.id.length > 0 && <NotesById input={formInputs} />}
+        {/* {formInputs.id.length > 0 && <NotesById input={formInputs} />} */}
       </form>
+      {loadDoc && (
+        <NotesById
+          id={sendForm.id}
+          docTitle={sendForm.file}
+          passkey={sendForm.password}
+        />
+      )}
     </>
   )
 }
