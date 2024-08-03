@@ -39,6 +39,7 @@ export default function Document({ docTitle, passkey }: Props) {
     <>
       {inputId.length !== 5 && (
         <input
+          className="border-solid border-2 border-indigo-600"
           onChange={(e) => setInputId(e.target.value)}
           value={inputId}
           placeholder="input a 5-digit number"
@@ -47,6 +48,7 @@ export default function Document({ docTitle, passkey }: Props) {
       {editTitle ? (
         <>
           <input
+            className="border-solid border-2 border-indigo-600"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder={docTitle}
@@ -61,6 +63,7 @@ export default function Document({ docTitle, passkey }: Props) {
       ) : (
         <>
           <label
+            className="border-solid border-2 border-indigo-600"
             onDoubleClick={() => {
               setEditTitle(true)
               setTitle('')
