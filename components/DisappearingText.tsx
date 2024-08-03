@@ -1,46 +1,35 @@
 'use client'
-import React, { useState, useEffect, useRef } from 'react'
 
-interface DisappearingTextProps {
+import { useState, useEffect } from 'react'
+
+interface Props {
   text: string
-  interval: number
 }
 
-const DisappearingText: React.FC<DisappearingTextProps> = ({
-  text,
-  interval,
-}) => {
-  const [currentText, setCurrentText] = useState<string>(text)
+const DisappearingText = ({ text }: Props) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
-    // Set an interval to remove one character at a time
-    const timer = setInterval(() => {
-      setCurrentText((prev) => {
-        if (prev.length === 0) {
-          clearInterval(timer)
-          return prev
-        }
+    const timer = setTimeout(() => {
+      if (currentIndex < text.length) {
+        setCurrentIndex(currentIndex + 1)
+      }
+    }, 1000)
 
-        addText(prev[0])
-        return prev.slice(1)
-      })
-    }, interval)
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(timer)
-  }, [interval])
-
-  const [bgText, setBgText] = useState('')
-
-  function addText(letter: string) {
-    setBgText((prev) => {
-      return (prev += letter)
-    })
-  }
+    return () => clearTimeout(timer)
+  }, [currentIndex])
 
   return (
     <div>
-      {currentText}, {bgText}
+      {text.split('').map((char, index) => (
+        <span
+          key={index}
+          className={index < currentIndex ? 'text-white' : 'text-black'}
+          // style={{ color: index < currentIndex ? 'white' : 'black' }}
+        >
+          {char}
+        </span>
+      ))}
     </div>
   )
 }

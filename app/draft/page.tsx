@@ -3,7 +3,7 @@ import React from 'react'
 
 const App = () => (
   <div>
-    <DisappearingText text="Hello, World!" interval={1000} />
+    <DisappearingText text="Hello, World!" />
   </div>
 )
 
