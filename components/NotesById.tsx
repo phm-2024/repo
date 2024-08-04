@@ -37,9 +37,7 @@ export default function NotesById({
         }
         const data = await response.json()
 
-        // if (data[0].file_name == docTitle) {
-        //   setFileName(true)
-        // }
+        setTitle(data[0].file_name)
 
         if (data[0].password == passkey) {
           setInputPw(true)
@@ -57,12 +55,8 @@ export default function NotesById({
 
     fetchProjects()
   }, [])
-  const [submitting, setSubmitting] = useState(false)
 
   async function createNotes() {
-    // e.preventDefault()
-    setSubmitting(true)
-
     try {
       const res = await fetch('/api/notes/new', {
         method: 'POST',
@@ -76,7 +70,6 @@ export default function NotesById({
     } catch (error) {
       console.log(error)
     } finally {
-      setSubmitting(false)
       setActiveComponent('')
     }
   }
@@ -111,7 +104,9 @@ export default function NotesById({
         </>
       )}
       <div
-        onClick={() => setFocus(true)}
+        onClick={() => {
+          document.getElementById('textBox')?.focus()
+        }}
         className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
       >
         <DisappearingText text={input} password={passkey} />
@@ -121,7 +116,14 @@ export default function NotesById({
         value={input}
         className="border-solid border-2 border-indigo-600"
         placeholder="Write your notes here"
-        autoFocus={focus}
+        autoFocus={true}
+        id="textBox"
+        // maxLength={500}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setInput(input + '♡')
+          }
+        }}
       />
       <button onClick={createNotes}>Save notes</button>
     </>

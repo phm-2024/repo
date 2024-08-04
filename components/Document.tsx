@@ -28,12 +28,6 @@ export default function Document({
           notes: input,
         }),
       })
-      // console.log({
-      //   user_id: inputId,
-      //   password: passkey,
-      //   file_name: title,
-      //   notes: input,
-      // })
     } catch (error) {
       console.log(error)
     } finally {
@@ -94,7 +88,7 @@ export default function Document({
         maxLength={500}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            setInput(input + '/n')
+            setInput(input + '♡')
           }
         }}
       />
