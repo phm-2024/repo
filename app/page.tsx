@@ -7,6 +7,8 @@ import LoadData from '@/components/LoadData'
 export default function Home() {
   const [passkey, setPasskey] = useState('')
   const [activeComponent, setActiveComponent] = useState('')
+  const [loadDoc, setLoadDoc] = useState(false)
+
   // console.log(activeComponent)
 
   const renderComponent = () => {
@@ -25,7 +27,13 @@ export default function Home() {
         </>
       )
     } else if (activeComponent === 'LoadData') {
-      return <LoadData setActiveComponent={setActiveComponent} />
+      return (
+        <LoadData
+          setActiveComponent={setActiveComponent}
+          setLoadDoc={setLoadDoc}
+          loadDoc={loadDoc}
+        />
+      )
     }
     return null
   }
@@ -38,9 +46,8 @@ export default function Home() {
         <button
           className="px-5 py-2"
           onClick={() => {
-            activeComponent === 'New'
-              ? setActiveComponent('')
-              : setActiveComponent('New')
+            setActiveComponent('New')
+            setPasskey('')
           }}
         >
           NEW NOTES
@@ -48,9 +55,8 @@ export default function Home() {
         <button
           className="px-5 py-2"
           onClick={() => {
-            activeComponent === 'LoadData'
-              ? setActiveComponent('')
-              : setActiveComponent('LoadData')
+            setActiveComponent('LoadData')
+            setLoadDoc(false)
           }}
         >
           LOAD NOTES

@@ -5,6 +5,8 @@ import NotesById from './NotesById'
 
 interface Props {
   setActiveComponent: React.Dispatch<React.SetStateAction<string>>
+  setLoadDoc: React.Dispatch<React.SetStateAction<boolean>>
+  loadDoc: boolean
 }
 interface Form {
   id: string
@@ -12,7 +14,11 @@ interface Form {
   password: string
 }
 
-export default function LoadData({ setActiveComponent }: Props) {
+export default function LoadData({
+  setActiveComponent,
+  setLoadDoc,
+  loadDoc,
+}: Props) {
   const [formInputs, setformInputs] = useState<Form>({
     id: '',
     file: '',
@@ -30,8 +36,6 @@ export default function LoadData({ setActiveComponent }: Props) {
     file: '',
     password: '',
   })
-
-  const [loadDoc, setLoadDoc] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target

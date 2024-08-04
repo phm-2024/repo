@@ -19,6 +19,7 @@ export default function Document({
   const [oldTitle, setOldTitle] = useState(docTitle)
 
   async function createNotes() {
+    title === '' && setTitle(oldTitle)
     try {
       const res = await fetch('/api/notes/new', {
         method: 'POST',
