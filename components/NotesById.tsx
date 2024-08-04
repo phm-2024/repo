@@ -111,21 +111,23 @@ export default function NotesById({
       >
         <DisappearingText text={input} password={passkey} />
       </div>
-      <input
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-        className="border-solid border-2 border-indigo-600"
-        placeholder="Write your notes here"
-        autoFocus={true}
-        id="textBox"
-        // maxLength={500}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            setInput(input + '♡')
-          }
-        }}
-      />
-      <button onClick={createNotes}>Save notes</button>
+      <section className="blank">
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          // className="border-solid border-2 border-indigo-600"
+          placeholder="Write your notes here"
+          autoFocus={true}
+          id="textBox"
+          // maxLength={500}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setInput(input + '♡')
+            }
+          }}
+        />
+        <button onClick={createNotes}>Save notes</button>
+      </section>
     </>
   )
 }

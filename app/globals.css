@@ -50,13 +50,28 @@ button {
   transition: 0.3s ease;
 }
 
-.memo {
-  /* box-shadow: 5px 5px 5px gray; */
-}
-
 button:hover {
   background-color: rgb(173, 216, 230);
   transform: scale(1.05);
+}
+
+.blank button,
+.blank input,
+.blank label {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  margin: 2em;
+  padding: 0;
+  width: auto;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+.blank input:focus {
+  background-color: #ffffff;
+  transform: none;
+  transition: none;
 }
 
 input,
