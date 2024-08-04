@@ -51,38 +51,34 @@ export default function LoadData({ setActiveComponent }: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <input
-          onChange={handleChange}
-          name="id"
-          value={form.id}
-          placeholder="Enter Id"
-          className="border-solid border-2 border-indigo-600"
-        />
-        <input
-          onChange={handleChange}
-          name="file"
-          value={form.file}
-          placeholder="Enter file name"
-          className="border-solid border-2 border-indigo-600"
-        />
-        <input
-          onChange={handleChange}
-          name="password"
-          value={form.password}
-          placeholder="Enter password"
-          className="border-solid border-2 border-indigo-600"
-        />
-        <button type="submit">Load the doc</button>
-        {/* {formInputs.id.length > 0 && <NotesById input={formInputs} />} */}
-      </form>
-      {loadDoc && (
+      {loadDoc ? (
         <NotesById
           id={sendForm.id}
           docTitle={sendForm.file}
           passkey={sendForm.password}
           setActiveComponent={setActiveComponent}
         />
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-center items-center"
+        >
+          <input
+            onChange={handleChange}
+            name="id"
+            value={form.id}
+            placeholder="Enter Id"
+            className="border-solid border-2 border-indigo-600"
+          />
+          <input
+            onChange={handleChange}
+            name="password"
+            value={form.password}
+            placeholder="Enter password"
+            className="border-solid border-2 border-indigo-600"
+          />
+          <button type="submit">Load document</button>
+        </form>
       )}
     </>
   )

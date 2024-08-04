@@ -59,7 +59,7 @@ const DisappearingText = ({ text, password }: Props) => {
 
   return (
     <>
-      <p style={{ color: 'white' }}>
+      <p className="text-amber-200">
         {useText[0].map((para) => (
           <>
             <p>{para}</p>
@@ -67,7 +67,7 @@ const DisappearingText = ({ text, password }: Props) => {
           </>
         ))}
       </p>
-      <p style={{ color: 'black' }}>
+      <p className="text-black">
         {useText[1].map((para) => (
           <>
             <p>{para}</p>

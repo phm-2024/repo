@@ -17,7 +17,6 @@ export default function Home() {
             <Password setPasskey={setPasskey} />
           ) : (
             <Document
-              // id={0}
               docTitle={'Double Click to rename'}
               passkey={passkey}
               setActiveComponent={setActiveComponent}

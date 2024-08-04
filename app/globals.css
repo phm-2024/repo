@@ -23,7 +23,7 @@ body {
   align-items: center;
   width: 70%;
   height: 100vh;
-  padding: 3em;
+  padding: 2em;
 }
 
 body > div {
@@ -45,9 +45,13 @@ button {
   color: rgb(49, 48, 48);
   border-radius: 5px;
   padding: 0.5em;
-  box-shadow: 5px 5px 5px gray;
+  box-shadow: 5px 5px 5px rgb(128, 128, 128);
   margin: 1em 2em;
   transition: 0.3s ease;
+}
+
+.memo {
+  /* box-shadow: 5px 5px 5px gray; */
 }
 
 button:hover {
@@ -60,7 +64,7 @@ label {
   box-shadow: 5px 5px 5px gray;
   border: 1px gray solid;
   border-radius: 5px;
-  margin: 2em;
+  margin: 1em;
   padding: 0.5em;
   width: 20em;
 }

@@ -22,7 +22,7 @@ export default function NotesById({
   const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
   const [focus, setFocus] = useState(false)
-  const [fileName, setFileName] = useState(false)
+  // const [fileName, setFileName] = useState(false)
   const [inputPw, setInputPw] = useState(false)
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export default function NotesById({
         }
         const data = await response.json()
 
-        if (data[0].file_name == docTitle) {
-          setFileName(true)
-        }
+        // if (data[0].file_name == docTitle) {
+        //   setFileName(true)
+        // }
 
         if (data[0].password == passkey) {
           setInputPw(true)
@@ -59,8 +59,8 @@ export default function NotesById({
   }, [])
   const [submitting, setSubmitting] = useState(false)
 
-  async function createNotes(e: ChangeEvent<HTMLTextAreaElement>) {
-    e.preventDefault()
+  async function createNotes() {
+    // e.preventDefault()
     setSubmitting(true)
 
     try {
@@ -86,7 +86,6 @@ export default function NotesById({
       {editTitle ? (
         <>
           <input
-            className="border-solid border-2 border-indigo-600"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder={docTitle}
@@ -111,15 +110,17 @@ export default function NotesById({
           </label>
         </>
       )}
-      <div onClick={() => setFocus(true)}>
+      <div
+        onClick={() => setFocus(true)}
+        className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
+      >
         <DisappearingText text={input} password={passkey} />
       </div>
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}
         className="border-solid border-2 border-indigo-600"
-        placeholder="Document"
-        style={{ color: 'white', border: 'none' }}
+        placeholder="Write your notes here"
         autoFocus={focus}
       />
       <button onClick={createNotes}>Save notes</button>

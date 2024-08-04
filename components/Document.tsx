@@ -28,12 +28,12 @@ export default function Document({
           notes: input,
         }),
       })
-      console.log({
-        user_id: inputId,
-        password: passkey,
-        file_name: title,
-        notes: input,
-      })
+      // console.log({
+      //   user_id: inputId,
+      //   password: passkey,
+      //   file_name: title,
+      //   notes: input,
+      // })
     } catch (error) {
       console.log(error)
     } finally {
@@ -42,7 +42,7 @@ export default function Document({
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       {inputId.length !== 5 && (
         <input
           className="border-solid border-2 border-indigo-600"
@@ -79,7 +79,7 @@ export default function Document({
         onClick={() => {
           document.getElementById('textBox')?.focus()
         }}
-        className="w-96 h-64 break-words"
+        className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
       >
         <DisappearingText text={input} password={passkey} />
       </div>
@@ -99,6 +99,6 @@ export default function Document({
         }}
       />
       <button onClick={createNotes}>Save notes</button>
-    </>
+    </div>
   )
 }
