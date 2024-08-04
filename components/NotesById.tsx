@@ -115,6 +115,7 @@ export default function NotesById({
         <input
           onChange={(e) => setInput(e.target.value)}
           value={input}
+          spellCheck="false"
           // className="border-solid border-2 border-indigo-600"
           placeholder="Write your notes here"
           autoFocus={true}

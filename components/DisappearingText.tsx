@@ -57,7 +57,7 @@ const DisappearingText = ({ text, password }: Props) => {
   }
 
   return (
-    <span>
+    <span className="break-words w-[33rem]">
       <span className="text-amber-200">
         {useText[0].map((para, i) => (
           <>
@@ -66,7 +66,7 @@ const DisappearingText = ({ text, password }: Props) => {
           </>
         ))}
       </span>
-      <span className="text-black">
+      <span className="text-black break-words">
         {useText[1].map((para, i) => (
           <>
             {i > 0 && <br />}

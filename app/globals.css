@@ -73,6 +73,7 @@ button:hover {
   transform: none;
   transition: none;
   border: none;
+  outline: none;
 }
 
 input,
