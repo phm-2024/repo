@@ -93,7 +93,6 @@ export default function NotesById({
       ) : (
         <>
           <label
-            className="border-solid border-2 border-indigo-600"
             onDoubleClick={() => {
               setEditTitle(true)
               setTitle('')
@@ -106,26 +105,27 @@ export default function NotesById({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
       >
         <DisappearingText text={input} password={passkey} />
       </div>
-      <input
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-        className="border-solid border-2 border-indigo-600"
-        placeholder="Write your notes here"
-        autoFocus={true}
-        id="textBox"
-        // maxLength={500}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            setInput(input + '♡')
-          }
-        }}
-      />
-      <button onClick={createNotes}>Save notes</button>
+      <section className="blank">
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          spellCheck="false"
+          autoFocus={true}
+          id="textBox"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setInput(input + '♡')
+            }
+          }}
+        />
+        <button onClick={createNotes}>Save notes</button>
+      </section>
     </>
   )
 }

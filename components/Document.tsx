@@ -72,26 +72,29 @@ export default function Document({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
       >
         <DisappearingText text={input} password={passkey} />
       </div>
-      <input
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-        className="border-solid border-2 border-indigo-600"
-        placeholder="Document"
-        style={{ color: 'white', border: 'none' }}
-        id="textBox"
-        autoFocus={true}
-        maxLength={500}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            setInput(input + '♡')
-          }
-        }}
-      />
+      <section className="blank">
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          className="border-solid border-2 border-indigo-600"
+          style={{ color: 'white', border: 'none' }}
+          id="textBox"
+          spellCheck="false"
+          autoFocus={true}
+          maxLength={500}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setInput(input + '♡')
+            }
+          }}
+        />
+      </section>
       <button onClick={createNotes}>Save notes</button>
     </div>
   )
