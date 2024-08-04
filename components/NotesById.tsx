@@ -104,7 +104,9 @@ export default function NotesById({
         </>
       )}
       <div
-        onClick={() => setFocus(true)}
+        onClick={() => {
+          document.getElementById('textBox')?.focus()
+        }}
         className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
       >
         <DisappearingText text={input} password={passkey} />
