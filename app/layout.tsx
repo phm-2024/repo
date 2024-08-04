@@ -18,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <h1 className="text-indigo-600 text-4xl m-5">MY NOTES</h1>
-        <br />
         {children}
       </body>
     </html>

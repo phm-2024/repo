@@ -83,43 +83,45 @@ export default function NotesById({
 
   return (
     <>
-      {editTitle ? (
-        <>
-          <input
-            className="border-solid border-2 border-indigo-600"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            placeholder={docTitle}
-            onKeyDown={(e) => {
-              if (e.key == 'Enter') {
-                setEditTitle(false)
-              }
-            }}
-            autoFocus={true}
-          />
-        </>
-      ) : (
-        <>
-          <label
-            className="border-solid border-2 border-indigo-600"
-            onDoubleClick={() => {
-              setEditTitle(true)
-              setTitle('')
-            }}
-          >
-            {title}
-          </label>
-        </>
-      )}
-      <div onClick={() => setFocus(true)}>
-        <DisappearingText text={input} password={passkey} />
+      <div className="flex flex-col items-center w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200">
+        {editTitle ? (
+          <>
+            <input
+              // className="border-solid border-2 border-indigo-600"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder={docTitle}
+              onKeyDown={(e) => {
+                if (e.key == 'Enter') {
+                  setEditTitle(false)
+                }
+              }}
+              autoFocus={true}
+            />
+          </>
+        ) : (
+          <>
+            <label
+              className="border-solid border-2 border-indigo-600"
+              onDoubleClick={() => {
+                setEditTitle(true)
+                setTitle('')
+              }}
+            >
+              {title}
+            </label>
+          </>
+        )}
+        <div onClick={() => setFocus(true)}>
+          <DisappearingText text={input} password={passkey} />
+        </div>
       </div>
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}
         className="border-solid border-2 border-indigo-600"
         placeholder="Document"
-        style={{ color: 'white', border: 'none' }}
+        // style={{ color: 'white', border: 'none' }}
         autoFocus={focus}
       />
       <button onClick={createNotes}>Save notes</button>

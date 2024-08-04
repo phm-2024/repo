@@ -58,32 +58,37 @@ export default function Document({
             placeholder="input a 5-digit number"
           />
         )}
-        {editTitle ? (
-          <input
-            className="border-solid border-2 border-indigo-600"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            placeholder={docTitle}
-            onKeyDown={(e) => {
-              if (e.key == 'Enter') {
-                setEditTitle(false)
-              }
-            }}
-            autoFocus={true}
-          />
-        ) : (
-          <label
-            className="border-solid border-2 border-indigo-600"
-            onDoubleClick={() => {
-              setEditTitle(true)
-              setTitle('')
-            }}
+        <div className="flex flex-col items-center w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200">
+          {editTitle ? (
+            <input
+              className="border-solid border-2 border-indigo-600"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder={docTitle}
+              onKeyDown={(e) => {
+                if (e.key == 'Enter') {
+                  setEditTitle(false)
+                }
+              }}
+              autoFocus={true}
+            />
+          ) : (
+            <label
+              className="border-solid border-2 border-indigo-600"
+              onDoubleClick={() => {
+                setEditTitle(true)
+                setTitle('')
+              }}
+            >
+              {title}
+            </label>
+          )}
+          <div
+            onClick={() => setFocus(true)}
+            // className="w-96 h-64 p-2 pt-4 break-words bg-amber-200"
           >
-            {title}
-          </label>
-        )}
-        <div onClick={() => setFocus(true)} className="w-96 h-64 break-words">
-          <DisappearingText text={input} password={passkey} />
+            <DisappearingText text={input} password={passkey} />
+          </div>
         </div>
         <input
           onChange={(e) => setInput(e.target.value)}

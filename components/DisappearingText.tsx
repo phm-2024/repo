@@ -46,7 +46,7 @@ const DisappearingText = ({ text, password }: Props) => {
             index < currentIndex
               ? passedWord
                 ? 'text-black'
-                : 'text-white'
+                : 'text-amber-200'
               : 'text-black'
           }
         >

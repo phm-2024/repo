@@ -51,7 +51,10 @@ export default function LoadData({ setActiveComponent }: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-center items-center"
+      >
         <input
           onChange={handleChange}
           name="id"
