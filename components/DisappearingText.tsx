@@ -37,23 +37,37 @@ const DisappearingText = ({ text, password }: Props) => {
     }
   }, [currentIndex, text])
 
-  function handleFocus() {}
+  function whiteText() {
+    const textBody = [[], []]
+    text.split('').map((char, i) => {
+      i < currentIndex
+        ? passedWord
+          ? textBody[1].push()
+          : textBody[0].push()
+        : textBody[1].push()
+    })
+    return textBody
+  }
 
   return (
     <>
-      {text.split('').map((char, index) => (
-        <span
-          key={index}
-          className={
-            index < currentIndex
-              ? passedWord
-                ? 'text-black'
-                : 'text-white'
-              : 'text-black'
-          }
-        >
-          {char}
-        </span>
+      {text.split('/n').map((para) => (
+        <p>
+          {para.split('').map((char, index) => (
+            <span
+              key={index}
+              className={
+                index < currentIndex
+                  ? passedWord
+                    ? 'text-black'
+                    : 'text-white'
+                  : 'text-black'
+              }
+            >
+              {char}
+            </span>
+          ))}
+        </p>
       ))}
     </>
   )
