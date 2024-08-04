@@ -100,7 +100,9 @@ export default function Document({
           }}
         />
       </section>
-      <button onClick={createNotes}>Save Notes</button>
+      <button onClick={createNotes} style={{ marginBottom: '5em' }}>
+        Save Notes
+      </button>
     </div>
   )
 }

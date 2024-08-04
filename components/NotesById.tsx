@@ -6,6 +6,7 @@ interface Props {
   id: string
   docTitle: string
   passkey: string
+  setLoadDoc: React.Dispatch<React.SetStateAction<boolean>>
   setActiveComponent: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -13,6 +14,7 @@ export default function NotesById({
   id,
   docTitle,
   passkey,
+  setLoadDoc,
   setActiveComponent,
 }: Props) {
   const [editTitle, setEditTitle] = useState(false)
@@ -39,7 +41,7 @@ export default function NotesById({
         setTitle(data[0].file_name)
 
         if (data[0].password != passkey) {
-          setActiveComponent('')
+          setLoadDoc(false)
         }
 
         setNotes(data)
@@ -126,7 +128,9 @@ export default function NotesById({
           }}
         />
       </section>
-      <button onClick={createNotes}>Update Notes</button>
+      <button onClick={createNotes} style={{ marginBottom: '5em' }}>
+        Update Notes
+      </button>
     </>
   )
 }

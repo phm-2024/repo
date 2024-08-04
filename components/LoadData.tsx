@@ -61,6 +61,7 @@ export default function LoadData({
           docTitle={sendForm.file}
           passkey={sendForm.password}
           setActiveComponent={setActiveComponent}
+          setLoadDoc={setLoadDoc}
         />
       ) : (
         <form
