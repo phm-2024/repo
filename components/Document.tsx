@@ -16,6 +16,7 @@ export default function Document({
   const [inputId, setInputId] = useState('')
   const [input, setInput] = useState('')
   const [title, setTitle] = useState(docTitle)
+  const [oldTitle, setOldTitle] = useState(docTitle)
 
   async function createNotes() {
     try {
@@ -53,6 +54,7 @@ export default function Document({
           placeholder={docTitle}
           onKeyDown={(e) => {
             if (e.key == 'Enter') {
+              title === '' && setTitle(oldTitle)
               setEditTitle(false)
             }
           }}
@@ -63,6 +65,7 @@ export default function Document({
           className="border-solid border-2 border-indigo-600"
           onDoubleClick={() => {
             setEditTitle(true)
+            setOldTitle(title)
             setTitle('')
           }}
         >
@@ -72,6 +75,7 @@ export default function Document({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          title === '' && setTitle(oldTitle)
           setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
@@ -95,7 +99,7 @@ export default function Document({
           }}
         />
       </section>
-      <button onClick={createNotes}>Save notes</button>
+      <button onClick={createNotes}>Save Notes</button>
     </div>
   )
 }
