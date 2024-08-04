@@ -86,7 +86,6 @@ export default function NotesById({
       {editTitle ? (
         <>
           <input
-            // className="border-solid border-2 border-indigo-600"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder={docTitle}
@@ -122,7 +121,6 @@ export default function NotesById({
         value={input}
         className="border-solid border-2 border-indigo-600"
         placeholder="Write your notes here"
-        // style={{ color: 'white', border: 'none' }}
         autoFocus={focus}
       />
       <button onClick={createNotes}>Save notes</button>
