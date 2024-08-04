@@ -72,6 +72,7 @@ button:hover {
   background-color: #ffffff;
   transform: none;
   transition: none;
+  border: none;
 }
 
 input,
