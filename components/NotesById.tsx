@@ -22,7 +22,7 @@ export default function NotesById({
   const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
   const [focus, setFocus] = useState(false)
-  const [fileName, setFileName] = useState(false)
+  // const [fileName, setFileName] = useState(false)
   const [inputPw, setInputPw] = useState(false)
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export default function NotesById({
         }
         const data = await response.json()
 
-        if (data[0].file_name == docTitle) {
-          setFileName(true)
-        }
+        // if (data[0].file_name == docTitle) {
+        //   setFileName(true)
+        // }
 
         if (data[0].password == passkey) {
           setInputPw(true)
@@ -83,44 +83,45 @@ export default function NotesById({
 
   return (
     <>
-      <div className="flex flex-col items-center w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200">
-        {editTitle ? (
-          <>
-            <input
-              // className="border-solid border-2 border-indigo-600"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder={docTitle}
-              onKeyDown={(e) => {
-                if (e.key == 'Enter') {
-                  setEditTitle(false)
-                }
-              }}
-              autoFocus={true}
-            />
-          </>
-        ) : (
-          <>
-            <label
-              className="border-solid border-2 border-indigo-600"
-              onDoubleClick={() => {
-                setEditTitle(true)
-                setTitle('')
-              }}
-            >
-              {title}
-            </label>
-          </>
-        )}
-        <div onClick={() => setFocus(true)}>
-          <DisappearingText text={input} password={passkey} />
-        </div>
+      {editTitle ? (
+        <>
+          <input
+            // className="border-solid border-2 border-indigo-600"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder={docTitle}
+            onKeyDown={(e) => {
+              if (e.key == 'Enter') {
+                setEditTitle(false)
+              }
+            }}
+            autoFocus={true}
+          />
+        </>
+      ) : (
+        <>
+          <label
+            className="border-solid border-2 border-indigo-600"
+            onDoubleClick={() => {
+              setEditTitle(true)
+              setTitle('')
+            }}
+          >
+            {title}
+          </label>
+        </>
+      )}
+      <div
+        onClick={() => setFocus(true)}
+        className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
+      >
+        <DisappearingText text={input} password={passkey} />
       </div>
       <input
         onChange={(e) => setInput(e.target.value)}
         value={input}
         className="border-solid border-2 border-indigo-600"
-        placeholder="Document"
+        placeholder="Write your notes here"
         // style={{ color: 'white', border: 'none' }}
         autoFocus={focus}
       />
