@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
 import DisappearingText from './DisappearingText'
 
 interface Props {
@@ -16,13 +16,8 @@ export default function Document({
   const [inputId, setInputId] = useState('')
   const [input, setInput] = useState('')
   const [title, setTitle] = useState(docTitle)
-  const [focus, setFocus] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
 
-  async function createNotes(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSubmitting(true)
-
+  async function createNotes() {
     try {
       const res = await fetch('/api/notes/new', {
         method: 'POST',
@@ -42,66 +37,68 @@ export default function Document({
     } catch (error) {
       console.log(error)
     } finally {
-      setSubmitting(false)
       setActiveComponent('')
     }
   }
 
   return (
     <>
-      <form onSubmit={createNotes} className="flex flex-col">
-        {inputId.length !== 5 && (
-          <input
-            className="border-solid border-2 border-indigo-600"
-            onChange={(e) => setInputId(e.target.value)}
-            value={inputId}
-            placeholder="input a 5-digit number"
-          />
-        )}
-        {editTitle ? (
-          <input
-            className="border-solid border-2 border-indigo-600"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            placeholder={docTitle}
-            onKeyDown={(e) => {
-              if (e.key == 'Enter') {
-                setEditTitle(false)
-              }
-            }}
-            autoFocus={true}
-          />
-        ) : (
-          <label
-            className="border-solid border-2 border-indigo-600"
-            onDoubleClick={() => {
-              setEditTitle(true)
-              setTitle('')
-            }}
-          >
-            {title}
-          </label>
-        )}
-        <div
-          onClick={() => {
-            document.getElementById('textBox')?.focus()
-          }}
-          className="w-96 h-64 break-words"
-        >
-          <DisappearingText text={input} password={passkey} />
-        </div>
+      {inputId.length !== 5 && (
         <input
-          onChange={(e) => setInput(e.target.value)}
-          value={input}
           className="border-solid border-2 border-indigo-600"
-          placeholder="Document"
-          style={{ color: 'white', border: 'none' }}
-          id="textBox"
-          autoFocus={true}
-          maxLength={500}
+          onChange={(e) => setInputId(e.target.value)}
+          value={inputId}
+          placeholder="input a 5-digit number"
         />
-        <button type="submit">Save notes</button>
-      </form>
+      )}
+      {editTitle ? (
+        <input
+          className="border-solid border-2 border-indigo-600"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          placeholder={docTitle}
+          onKeyDown={(e) => {
+            if (e.key == 'Enter') {
+              setEditTitle(false)
+            }
+          }}
+          autoFocus={true}
+        />
+      ) : (
+        <label
+          className="border-solid border-2 border-indigo-600"
+          onDoubleClick={() => {
+            setEditTitle(true)
+            setTitle('')
+          }}
+        >
+          {title}
+        </label>
+      )}
+      <div
+        onClick={() => {
+          document.getElementById('textBox')?.focus()
+        }}
+        className="w-96 h-64 break-words"
+      >
+        <DisappearingText text={input} password={passkey} />
+      </div>
+      <input
+        onChange={(e) => setInput(e.target.value)}
+        value={input}
+        className="border-solid border-2 border-indigo-600"
+        placeholder="Document"
+        style={{ color: 'white', border: 'none' }}
+        id="textBox"
+        autoFocus={true}
+        maxLength={500}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setInput(input + '/n')
+          }
+        }}
+      />
+      <button onClick={createNotes}>Save notes</button>
     </>
   )
 }
