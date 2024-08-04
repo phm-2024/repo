@@ -42,7 +42,7 @@ const DisappearingText = ({ text, password }: Props) => {
   }, [currentIndex, text])
 
   function whiteText() {
-    const textBody = [[], []]
+    const textBody: [string[], string[]] = [[], []]
     text.split('').map((char, i) => {
       i < currentIndex
         ? passedWord
