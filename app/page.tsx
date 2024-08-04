@@ -43,7 +43,7 @@ export default function Home() {
               : setActiveComponent('New')
           }}
         >
-          NEW
+          NEW NOTES
         </button>
         <button
           className="px-5 py-2"
@@ -53,7 +53,7 @@ export default function Home() {
               : setActiveComponent('LoadData')
           }}
         >
-          LOAD
+          LOAD NOTES
         </button>
       </div>
       {renderComponent()}
