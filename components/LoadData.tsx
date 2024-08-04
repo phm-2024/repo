@@ -71,12 +71,12 @@ export default function LoadData({ setActiveComponent }: Props) {
             className="border-solid border-2 border-indigo-600"
           />
           {/* <input
-        onChange={handleChange}
-        name="file"
-        value={form.file}
-        placeholder="Enter file name"
-        className="border-solid border-2 border-indigo-600"
-      /> */}
+            onChange={handleChange}
+            name="file"
+            value={form.file}
+            placeholder="Enter file name"
+            className="border-solid border-2 border-indigo-600"
+          /> */}
           <input
             onChange={handleChange}
             name="password"
@@ -85,7 +85,6 @@ export default function LoadData({ setActiveComponent }: Props) {
             className="border-solid border-2 border-indigo-600"
           />
           <button type="submit">Load document</button>
-          {/* {formInputs.id.length > 0 && <NotesById input={formInputs} />} */}
         </form>
       )}
     </>

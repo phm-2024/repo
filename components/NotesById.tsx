@@ -59,8 +59,8 @@ export default function NotesById({
   }, [])
   const [submitting, setSubmitting] = useState(false)
 
-  async function createNotes(e: ChangeEvent<HTMLTextAreaElement>) {
-    e.preventDefault()
+  async function createNotes() {
+    // e.preventDefault()
     setSubmitting(true)
 
     try {

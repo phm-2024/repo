@@ -33,12 +33,12 @@ export default function Document({
           notes: input,
         }),
       })
-      console.log({
-        user_id: inputId,
-        password: passkey,
-        file_name: title,
-        notes: input,
-      })
+      // console.log({
+      //   user_id: inputId,
+      //   password: passkey,
+      //   file_name: title,
+      //   notes: input,
+      // })
     } catch (error) {
       console.log(error)
     } finally {
@@ -49,7 +49,7 @@ export default function Document({
 
   return (
     <>
-      <form onSubmit={createNotes} className="flex flex-col">
+      <form onSubmit={createNotes} className="flex flex-col items-center">
         {inputId.length !== 5 && (
           <input
             className="border-solid border-2 border-indigo-600"

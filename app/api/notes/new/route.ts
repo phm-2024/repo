@@ -2,7 +2,7 @@ import { turso } from '@/utils/database'
 
 export const POST = async (req: Request) => {
   const { user_id, password, file_name, notes } = await req.json()
-  console.log({ user_id, password, file_name, notes })
+  // console.log({ user_id, password, file_name, notes })
 
   const query =
     'INSERT INTO notes (user_id, password, file_name, notes) VALUES (?,?,?,?)'

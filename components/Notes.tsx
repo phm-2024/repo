@@ -25,7 +25,7 @@ export default function Notes({ input }: Props) {
           )
         }
         const data = await response.json()
-        console.log(data[0].notes)
+        // console.log(data[0].notes)
 
         setNotes(data)
 
@@ -41,7 +41,7 @@ export default function Notes({ input }: Props) {
 
   if (!loading && notes) {
     const noteBits = notes[0].notes.split('\n')
-    console.log(noteBits)
+    // console.log(noteBits)
 
     return (
       <>
