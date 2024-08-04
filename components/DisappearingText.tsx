@@ -22,13 +22,12 @@ const DisappearingText = ({ text, password }: Props) => {
 
     const newText = whiteText()
     setUseText(newText)
-    console.log(newText)
 
     const timer = setTimeout(() => {
       if (currentIndex < text.length) {
         setCurrentIndex(currentIndex + 1)
       }
-    }, 1000)
+    }, 500)
 
     const restore = setTimeout(() => {
       if (currentIndex > text.length) {
@@ -52,30 +51,30 @@ const DisappearingText = ({ text, password }: Props) => {
         : textBody[1].push(char)
     })
 
-    const whiteOut = textBody[0].join('').split('/n')
-    const blackOut = textBody[1].join('').split('/n')
+    const whiteOut = textBody[0].join('').split('♡')
+    const blackOut = textBody[1].join('').split('♡')
     return [[...whiteOut], [...blackOut]]
   }
 
   return (
-    <>
-      <p className="text-amber-200">
-        {useText[0].map((para) => (
+    <span>
+      <span className="text-amber-200">
+        {useText[0].map((para, i) => (
           <>
-            <p>{para}</p>
-            <br />
+            {i > 0 && <br />}
+            {para}
           </>
         ))}
-      </p>
-      <p className="text-black">
-        {useText[1].map((para) => (
+      </span>
+      <span className="text-black">
+        {useText[1].map((para, i) => (
           <>
-            <p>{para}</p>
-            <br />
+            {i > 0 && <br />}
+            {para}
           </>
         ))}
-      </p>
-    </>
+      </span>
+    </span>
   )
 }
 
