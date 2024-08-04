@@ -38,8 +38,8 @@ export default function NotesById({
 
         setTitle(data[0].file_name)
 
-        if (data[0].password == passkey) {
-          setInputPw(true)
+        if (data[0].password != passkey) {
+          setActiveComponent('')
         }
 
         setNotes(data)
