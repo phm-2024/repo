@@ -83,10 +83,12 @@ export default function Document({
           </label>
         )}
         <div
-          onClick={() => setFocus(true)}
           //  className="flex flex-col items-center w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
 
           className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
+          onClick={() => {
+            document.getElementById('textBox')?.focus()
+          }}
         >
           <DisappearingText text={input} password={passkey} />
         </div>
@@ -97,7 +99,8 @@ export default function Document({
           className="border-solid border-2 border-indigo-600"
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
-          autoFocus={focus}
+          id="textBox"
+          autoFocus={true}
           maxLength={500}
         />
         <button type="submit">Save notes</button>
