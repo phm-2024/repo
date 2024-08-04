@@ -93,7 +93,6 @@ export default function NotesById({
       ) : (
         <>
           <label
-            className="border-solid border-2 border-indigo-600"
             onDoubleClick={() => {
               setEditTitle(true)
               setTitle('')
@@ -106,6 +105,7 @@ export default function NotesById({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
       >
@@ -116,11 +116,8 @@ export default function NotesById({
           onChange={(e) => setInput(e.target.value)}
           value={input}
           spellCheck="false"
-          // className="border-solid border-2 border-indigo-600"
-          placeholder="Write your notes here"
           autoFocus={true}
           id="textBox"
-          // maxLength={500}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               setInput(input + '♡')

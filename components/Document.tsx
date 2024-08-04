@@ -72,6 +72,7 @@ export default function Document({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-2 pt-4 break-words bg-amber-200"
       >
