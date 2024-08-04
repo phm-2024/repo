@@ -10,6 +10,7 @@ interface Props {
 const DisappearingText = ({ text, password }: Props) => {
   const [passedWord, setPassedWord] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [useText, setUseText] = useState([[''], ['']])
 
   useEffect(() => {
     const check = text
@@ -18,6 +19,10 @@ const DisappearingText = ({ text, password }: Props) => {
       .join('')
     const found = check.match(password)
     found != null ? setPassedWord(true) : setPassedWord(false)
+
+    const newText = whiteText()
+    setUseText(newText)
+    console.log(newText)
 
     const timer = setTimeout(() => {
       if (currentIndex < text.length) {
@@ -37,24 +42,39 @@ const DisappearingText = ({ text, password }: Props) => {
     }
   }, [currentIndex, text])
 
-  function handleFocus() {}
+  function whiteText() {
+    const textBody = [[], []]
+    text.split('').map((char, i) => {
+      i < currentIndex
+        ? passedWord
+          ? textBody[1].push(char)
+          : textBody[0].push(char)
+        : textBody[1].push(char)
+    })
+
+    const whiteOut = textBody[0].join('').split('/n')
+    const blackOut = textBody[1].join('').split('/n')
+    return [[...whiteOut], [...blackOut]]
+  }
 
   return (
     <>
-      {text.split('').map((char, index) => (
-        <span
-          key={index}
-          className={
-            index < currentIndex
-              ? passedWord
-                ? 'text-black'
-                : 'text-amber-200'
-              : 'text-black'
-          }
-        >
-          {char}
-        </span>
-      ))}
+      <p className="text-amber-200">
+        {useText[0].map((para) => (
+          <>
+            <p>{para}</p>
+            <br />
+          </>
+        ))}
+      </p>
+      <p className="text-black">
+        {useText[1].map((para) => (
+          <>
+            <p>{para}</p>
+            <br />
+          </>
+        ))}
+      </p>
     </>
   )
 }
