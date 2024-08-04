@@ -21,8 +21,7 @@ export default function NotesById({
   const [title, setTitle] = useState(docTitle)
   const [notes, setNotes] = useState<Note[]>()
   const [loading, setLoading] = useState(true)
-  const [focus, setFocus] = useState(false)
-  // const [fileName, setFileName] = useState(false)
+  const [oldTitle, setOldTitle] = useState(docTitle)
   const [inputPw, setInputPw] = useState(false)
 
   useEffect(() => {
@@ -57,12 +56,11 @@ export default function NotesById({
   }, [])
 
   async function createNotes() {
+    title === '' && setTitle(oldTitle)
     try {
-      const res = await fetch('/api/notes/new', {
-        method: 'POST',
+      const res = await fetch(`/api/notes/${id}`, {
+        method: 'PATCH',
         body: JSON.stringify({
-          user_id: inputId,
-          password: passkey,
           file_name: title,
           notes: input,
         }),
@@ -81,9 +79,10 @@ export default function NotesById({
           <input
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            placeholder={docTitle}
+            placeholder={oldTitle}
             onKeyDown={(e) => {
               if (e.key == 'Enter') {
+                title === '' && setTitle(oldTitle)
                 setEditTitle(false)
               }
             }}
@@ -95,6 +94,7 @@ export default function NotesById({
           <label
             onDoubleClick={() => {
               setEditTitle(true)
+              setOldTitle(title)
               setTitle('')
             }}
           >
@@ -105,6 +105,7 @@ export default function NotesById({
       <div
         onClick={() => {
           document.getElementById('textBox')?.focus()
+          title === '' && setTitle(oldTitle)
           setEditTitle(false)
         }}
         className="w-[35rem] min-h-64 h-fit p-4 pt-10 break-words bg-amber-200 shadow-3xl"
@@ -124,8 +125,8 @@ export default function NotesById({
             }
           }}
         />
-        <button onClick={createNotes}>Save notes</button>
       </section>
+      <button onClick={createNotes}>Update Notes</button>
     </>
   )
 }

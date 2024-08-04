@@ -35,12 +35,23 @@ export default function Home() {
   return (
     <div>
       <div className="flex justify-center">
-        <button className="px-5 py-2" onClick={() => setActiveComponent('New')}>
+        <button
+          className="px-5 py-2"
+          onClick={() => {
+            activeComponent === 'New'
+              ? setActiveComponent('')
+              : setActiveComponent('New')
+          }}
+        >
           NEW
         </button>
         <button
           className="px-5 py-2"
-          onClick={() => setActiveComponent('LoadData')}
+          onClick={() => {
+            activeComponent === 'LoadData'
+              ? setActiveComponent('')
+              : setActiveComponent('LoadData')
+          }}
         >
           LOAD
         </button>
