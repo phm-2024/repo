@@ -82,7 +82,15 @@ export default function Document({
             {title}
           </label>
         )}
+<<<<<<< HEAD
+        <div
+          onClick={() => {
+            document.getElementById('textBox').focus()
+          }}
+        >
+=======
         <div onClick={() => setFocus(true)} className="w-96 h-64 break-words">
+>>>>>>> cecb4bdf21363030039394ff2c2f352708e0838c
           <DisappearingText text={input} password={passkey} />
         </div>
         <input
@@ -91,8 +99,13 @@ export default function Document({
           className="border-solid border-2 border-indigo-600"
           placeholder="Document"
           style={{ color: 'white', border: 'none' }}
+<<<<<<< HEAD
+          id="textBox"
+          autoFocus={true}
+=======
           autoFocus={focus}
           maxLength={500}
+>>>>>>> cecb4bdf21363030039394ff2c2f352708e0838c
         />
         <button type="submit">Save notes</button>
       </form>

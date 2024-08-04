@@ -37,6 +37,8 @@ const DisappearingText = ({ text, password }: Props) => {
     }
   }, [currentIndex, text])
 
+  function handleFocus() {}
+
   return (
     <>
       {text.split('').map((char, index) => (
