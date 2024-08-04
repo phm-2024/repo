@@ -83,6 +83,7 @@ export default function Document({
       >
         <DisappearingText text={input} password={passkey} />
       </div>
+      <button onClick={createNotes}>Save Notes</button>
       <section className="blank">
         <input
           onChange={(e) => setInput(e.target.value)}
@@ -100,9 +101,6 @@ export default function Document({
           }}
         />
       </section>
-      <button onClick={createNotes} style={{ marginBottom: '5em' }}>
-        Save Notes
-      </button>
     </div>
   )
 }

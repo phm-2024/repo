@@ -63,10 +63,10 @@ export default function Home() {
         </button>
       </div>
       {renderComponent()}
-      <footer style={{ position: 'fixed', bottom: '1%', left: '45%' }}>
+      <footer style={{ position: 'fixed', bottom: '1%', left: '46.2%' }}>
         <a href="https://github.com/phm-terrible-ideas-2024/repo">
           <img
-            src="https://img.shields.io/badge/LINK TO THIS REPO-100000?style=for-the-badge&logo=github&logoColor=white"
+            src="https://img.shields.io/badge/LINK TO THIS REPO-100000?color=blue&style=ffor-the-badge&logo=github&logoColor=white"
             height="100"
           />
         </a>

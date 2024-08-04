@@ -114,6 +114,7 @@ export default function NotesById({
       >
         <DisappearingText text={input} password={passkey} />
       </div>
+      <button onClick={createNotes}>Update Notes</button>
       <section className="blank">
         <input
           onChange={(e) => setInput(e.target.value)}
@@ -128,9 +129,6 @@ export default function NotesById({
           }}
         />
       </section>
-      <button onClick={createNotes} style={{ marginBottom: '5em' }}>
-        Update Notes
-      </button>
     </>
   )
 }
